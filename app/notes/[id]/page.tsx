@@ -1,5 +1,5 @@
 import { fetchNoteById } from "@/lib/api";
-import NoteDetailsClient from "./Details.client";
+import NoteDetailsClient from "./NoteDetailsClient";
 import {
   dehydrate,
   HydrationBoundary,
