@@ -1,7 +1,7 @@
 // SSR компонент
 
 import  { fetchNotes } from "@/lib/api";
-import NotesClient from "./NotesClient";
+import NotesClient from "./Notes.client";
 
 
 export default async function NotesPage() {
