@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { Note, NewNoteData } from '../types/note';
+import type { Note, NewNoteData } from '@/types/note';
 
 export interface FetchNotesParams {
   page?: number;
@@ -9,8 +9,6 @@ export interface FetchNotesParams {
 
 export interface FetchNotesResponse {
  totalPages: number;
- page: number;
- perPage:number;
  notes: Note[];
 }
 
@@ -19,7 +17,7 @@ export interface FetchNotesResponse {
 
  export async function fetchNotes({ page = 1, perPage = 12, search, }: FetchNotesParams): Promise<FetchNotesResponse> {
 
-  const response = await axios<FetchNotesResponse>(`/notes`, {
+  const response = await axios.get<FetchNotesResponse>(`/notes`, {
     params: {
      page,
      perPage,
@@ -29,16 +27,18 @@ export interface FetchNotesResponse {
       Authorization: `Bearer ${token}`,
     },
   });
+
   return response.data;
 }
 
 export async function fetchNoteById (id: string): Promise<Note> {
 
-  const response = await axios.get(`/notes/${id}`, {
+  const response = await axios.get<Note>(`/notes/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
+
   return response.data;
 }
 
